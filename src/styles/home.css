@@ -1,11 +1,52 @@
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+@keyframes float-n-rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(-15deg) translateY(0px);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) rotate(-15deg) translateY(-10px);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(-15deg) translateY(0px);
+    }
+}
+
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
-    /* Changed to white to match standard clean designs, or keep grey if preferred. User didn't specify, but image looks like white header bar */
     padding: 1rem 4rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .navbar .logo {
@@ -68,6 +109,7 @@
     color: #000;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     margin: 0;
+    animation: fadeInUp 1s ease-out 0.2s backwards;
 }
 
 .hero-content h2 {
@@ -82,6 +124,7 @@
     color: #000;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     margin: 0;
+    animation: fadeInUp 1s ease-out 0.4s backwards;
 }
 
 /* Carousel Adjustments */
@@ -120,6 +163,7 @@
     text-align: center;
     transition: transform 0.3s ease;
     border: none;
+    animation: fadeInUp 0.8s ease-out 0.6s backwards;
 }
 
 .hero-card:hover,
@@ -163,6 +207,7 @@
     /* Orange */
     z-index: 5;
     filter: drop-shadow(-10px 10px 10px rgba(0, 0, 0, 0.3));
+    animation: float 6s ease-in-out infinite;
 }
 
 /* Restored Hero Triangle */
@@ -252,4 +297,425 @@
     border-color: transparent transparent #6c3483 transparent;
     /* Purple */
     z-index: 5;
+}
+
+/* Services Section */
+.services-section {
+    position: relative;
+    padding: 100px 20px;
+    background-color: white;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.services-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    max-width: 1200px;
+    width: 100%;
+    z-index: 10;
+    flex-wrap: wrap;
+    /* responsive */
+}
+
+.service-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    /* Push logo close to center gap */
+}
+
+.partner-logo img {
+    max-width: 300px;
+    height: auto;
+}
+
+.service-right {
+    flex: 1.5;
+    text-align: left;
+}
+
+.service-right h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+.service-list {
+    list-style: none;
+    /* remove default bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.service-list li {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+/* Custom Orange Bullet */
+.service-list li::before {
+    content: "●";
+    /* Unicode circle or use empty div */
+    color: #F94A00;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    /* slight adjustment */
+}
+
+/* Decorative Triangles for Services Section */
+
+/* Top Center Purple */
+.shape-triangle-center-purple {
+    position: absolute;
+    top: 50px;
+    left: 40%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 50px 80px 50px;
+    /* Triangle pointing up */
+    border-color: transparent transparent #6c3483 transparent;
+    z-index: 5;
+    transform: translateX(-50%) rotate(-15deg);
+    /* Slight rotation if needed */
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
+    animation: float-n-rotate 7s ease-in-out infinite;
+}
+
+/* Bottom Left Teal pointing into corner */
+.shape-triangle-bottom-left-teal {
+    position: absolute;
+    bottom: 50px;
+    left: 80px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 120px 80px 0 80px;
+    /* triangle pointing down */
+    border-color: #0E5B5E transparent transparent transparent;
+    z-index: 5;
+    transform: rotate(45deg);
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
+    animation: float-n-rotate 8s ease-in-out infinite 1s;
+}
+
+/* Bottom Right Orange pointing left */
+.shape-triangle-bottom-right-orange {
+    position: absolute;
+    bottom: 50px;
+    right: 15%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 60px 80px 60px 0;
+    /* Pointing left */
+    border-color: transparent #F94A00 transparent transparent;
+    z-index: 5;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
+    animation: float 6s ease-in-out infinite 0.5s;
+}
+
+/* Middle Banner */
+.middle-banner {
+    width: 100%;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Align content to right */
+    padding: 50px 10%;
+    /* Spacing */
+    border-top: 5px solid #3498db;
+    /* Blue border top like in screenshot */
+    border-bottom: 5px solid #3498db;
+    /* Blue border bottom */
+}
+
+/* Overlay for the whole banner if needed, or just the text box */
+/* Screenshot seems to have a text box with rounded corners overlaying the image */
+
+.banner-content {
+    background-color: rgba(255, 255, 255, 0.15);
+    /* Glassy effect */
+    backdrop-filter: blur(5px);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 10;
+    animation: fadeInUp 1s ease-out;
+}
+
+.banner-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 0;
+    font-family: inherit;
+    /* Use default sans-serif */
+}
+
+/* Team Section */
+.team-section {
+    padding: 100px 20px;
+    background-color: white;
+    text-align: center;
+}
+
+.team-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    /* Space between members */
+    flex-wrap: wrap;
+}
+
+.team-member {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Animation entry */
+    animation: fadeInUp 1s ease-out backwards;
+}
+
+/* Staggered animation */
+.team-member:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.team-member:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.team-member:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.member-photo {
+    width: 200px;
+    height: 250px;
+    /* Rectangular portrait */
+    margin-bottom: 30px;
+    overflow: hidden;
+    /* border-radius: 10px; Optional: screenshot looks like sharp or slightly rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member:hover .member-photo {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.member-info h4 {
+    font-family: serif;
+    /* Looks like a serif font in screenshot */
+    font-size: 1.5rem;
+    color: #000;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.member-info .designation {
+    font-size: 1rem;
+    font-weight: 700;
+    /* Bold */
+    color: #333;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.member-info .sub-designation {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Footer Section */
+.footer-section {
+    background-color: #212529;
+    /* Dark background */
+    color: #fff;
+    padding: 60px 0 0;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px 40px;
+    gap: 30px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-heading {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    position: relative;
+    padding-left: 15px;
+    /* Bullet accent if desired, or just space */
+}
+
+/* Optional Heading Access */
+.footer-heading::before {
+    content: "●";
+    color: #F94A00;
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
+    top: 3px;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    color: #ddd;
+}
+
+.footer-icon {
+    margin-right: 10px;
+    color: #F94A00;
+    /* Orange icons */
+    margin-top: 3px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #F94A00;
+}
+
+.link-icon {
+    margin-right: 10px;
+    color: #555;
+    /* Darker circle check */
+    font-size: 0.8rem;
+}
+
+/* Payment Methods Placeholder Styling */
+.payment-methods {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.payment-methods span {
+    background: #fff;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+.payment-methods .visa {
+    color: #1a1f71;
+}
+
+.payment-methods .mastercard {
+    color: #eb001b;
+}
+
+/* Widgets */
+.facebook-widget,
+.map-widget {
+    background: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    height: 150px;
+    /* fixed height placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-placeholder {
+    text-align: center;
+    color: #777;
+}
+
+.fb-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.fb-logo {
+    color: #1877f2;
+    font-size: 2rem;
+}
+
+.footer-bottom {
+    background-color: #1a1d20;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
+    color: #888;
 }

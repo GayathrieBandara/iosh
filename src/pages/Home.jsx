@@ -7,9 +7,14 @@ import image1 from '../assets/Images/image1.jpg';
 import image2 from '../assets/Images/image2.jpg';
 import image3 from '../assets/Images/image3.jpg';
 import image8 from '../assets/Images/image8.png';
+import logo2 from '../assets/Images/logo2.png';
 import image5 from '../assets/Images/image5.png';
+import bannerBg from '../assets/Images/image4.jpg'; /* Guessing this is the helmet image */
 import image6 from '../assets/Images/image6.png';
 import image7 from '../assets/Images/image7.png';
+import portrait1 from '../assets/Images/portrait1.png'; // Dr Ruwan
+import portrait2 from '../assets/Images/portrait2.png'; // Ms Ramya
+import portrait3 from '../assets/Images/portrait3.png'; // Dr Champika
 
 const Home = () => {
   return (
@@ -80,11 +85,7 @@ const Home = () => {
         <div className="services-content">
           <div className="service-left">
             <div className="partner-logo">
-              {/* Placeholder for the tree logo */}
-              <div className="logo-placeholder-tree">
-                <img src="https://placehold.co/100x100?text=Logo" alt="Central Environmental Authority" />
-                <p>මධ්‍යම පරිසර අධිකාරිය<br />மத்திய சுற்றாடல் அதிகாரசபை<br />Central Environmental Authority</p>
-              </div>
+              <img src={logo2} alt="Central Environmental Authority" />
             </div>
           </div>
 
@@ -104,7 +105,7 @@ const Home = () => {
       </section>
 
       {/* Middle Banner - Dark overlay with text */}
-      <section className="middle-banner">
+      <section className="middle-banner" style={{ backgroundImage: `url(${bannerBg})` }}>
         <div className="banner-overlay">
           <div className="banner-content">
             <p>
@@ -120,22 +121,41 @@ const Home = () => {
 
       {/* Team Section */}
       <section className="team-section">
-        <div className="team-member">
-          <div className="team-photo photo-ruwan"></div>
-          <h4>Dr Ruwan Wijayamuni</h4>
-          <p>CEO IOSH</p>
-          {/* <p className="designation-sub">Consultant Occupational Physician</p> */}
-        </div>
-        <div className="team-member">
-          <div className="team-photo photo-ramya"></div>
-          <h4>Ms Ramya Jamburegoda</h4>
-          <p>Chief Occupational Hygienist</p>
-        </div>
-        <div className="team-member">
-          <div className="team-photo photo-champika"></div>
-          <h4>Dr Champika Amarasinghe</h4>
-          <p>Chairperson IOSH</p>
-          {/* <p className="designation-sub">Consultant Community Physician</p> */}
+        <div className="team-container">
+          {/* Member 1 */}
+          <div className="team-member">
+            <div className="member-photo">
+              <img src={portrait1} alt="Dr Ruwan Wijayamuni" />
+            </div>
+            <div className="member-info">
+              <h4>Dr Ruwan<br />Wijayamuni</h4>
+              <p className="designation">CEO IOSH</p>
+              <p className="sub-designation">Consultant Occupational<br />Physician</p>
+            </div>
+          </div>
+
+          {/* Member 2 */}
+          <div className="team-member">
+            <div className="member-photo">
+              <img src={portrait2} alt="Ms Ramya Jamburegoda" />
+            </div>
+            <div className="member-info">
+              <h4>Ms Ramya<br />Jamburegoda</h4>
+              <p className="designation">Chief Occupational<br />Hygienist</p>
+            </div>
+          </div>
+
+          {/* Member 3 */}
+          <div className="team-member">
+            <div className="member-photo">
+              <img src={portrait3} alt="Dr Champika Amarasinghe" />
+            </div>
+            <div className="member-info">
+              <h4>Dr Champika<br />Amarasinghe</h4>
+              <p className="designation">Chairperson IOSH</p>
+              <p className="sub-designation">Consultant Community<br />Physician</p>
+            </div>
+          </div>
         </div>
       </section>
 
