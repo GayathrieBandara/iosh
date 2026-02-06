@@ -1,6 +1,15 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/home.css"
+import React from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import image1 from '../assets/Images/image1.jpg';
+import image2 from '../assets/Images/image2.jpg';
+import image3 from '../assets/Images/image3.jpg';
+import image8 from '../assets/Images/image8.png';
+import image5 from '../assets/Images/image5.png';
+import image6 from '../assets/Images/image6.png';
+import image7 from '../assets/Images/image7.png';
 
 const Home = () => {
   return (
@@ -15,27 +24,40 @@ const Home = () => {
         <div className="hero-content">
           <h1>Institute of Occupational Safety & Health</h1>
           <h2>Sri Lanka</h2>
+
+          <Carousel fade>
+            <Carousel.Item>
+              <img src={image1} alt="Workplace Safety" className="d-block w-100" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img src={image2} alt="Health Monitoring" className="d-block w-100" />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img src={image3} alt="Professional Training" className="d-block w-100" />
+            </Carousel.Item>
+          </Carousel>
         </div>
 
         {/* Three Cards Overlapping */}
         <div className="hero-cards-container">
           <div className="hero-card">
-            <div className="card-image img-env"></div>
+            <img src={image5} alt="Environmental Monitoring" className="card-image" />
             <h3>Environmental Monitoring</h3>
           </div>
           <div className="card">
-            <div className="card-image img-med"></div>
+            <img src={image6} alt="Medical Testing" className="card-image" />
             <h3>Medical Testing & Fitness-to-Work Assessments</h3>
           </div>
           <div className="card">
-            <div className="card-image img-training"></div>
+            <img src={image7} alt="Training" className="card-image" />
             <h3>Occupational Safety & Health Training</h3>
           </div>
         </div>
       </header>
 
       {/* Intro Section - Teal Background */}
-      <section className="intro-section">
+      <section className="intro-section" style={{ backgroundImage: `url(${image8})` }}>
+        <div className="intro-overlay"></div>
         <div className="shape-triangle-left-small"></div>
         <div className="shape-triangle-right-purple"></div>
 

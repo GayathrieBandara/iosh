@@ -2,11 +2,254 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #D9D9D9;
+    background-color: #fff;
+    /* Changed to white to match standard clean designs, or keep grey if preferred. User didn't specify, but image looks like white header bar */
+    padding: 1rem 4rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    height: 50px;
 }
 
 .navbar ul {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #F94A00;
+    /* Orange hover/active color */
+}
+
+.navbar .btn {
+    background-color: #F94A00;
+    /* Orange accent from image */
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+}
+
+/* Centered Title over Carousel */
+.hero-content h1 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 10;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #000;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.hero-content h2 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 10;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #000;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+/* Carousel Adjustments */
+.carousel-item {
+    height: 80vh;
+    /* Occupy significant screen height */
+    min-height: 600px;
+}
+
+.carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Overlapping Cards */
+.hero-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: -150px;
+    /* Pull up to overlap carousel */
+    position: relative;
+    z-index: 20;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.hero-card,
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: none;
+}
+
+.hero-card:hover,
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.hero-card h3,
+.card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+    margin: 10px 0 0;
+    min-height: 40px;
+    /* Force minimum height for alignment */
+    display: flex;
+    /* alignment assistance */
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.card-image {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Triangles/Shapes (Placeholders) */
+.shape-triangle-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 400px 400px 0;
+    border-color: transparent #F94A00 transparent transparent;
+    /* Orange */
+    z-index: 5;
+    filter: drop-shadow(-10px 10px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Restored Hero Triangle */
+.shape-triangle-left-hero {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 200px 0 200px 200px;
+    border-color: transparent transparent transparent #0E5B5E;
+    /* Teal */
+    z-index: 5;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Intro Section */
+.intro-section {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Optional: parallax effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 200px 20px 80px;
+    /* Increased top padding for overlap */
+    margin-top: -150px;
+    /* Pull up to overlap cards */
+    overflow: hidden;
+    /* Clip triangles */
+}
+
+.intro-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(14, 91, 94, 0.9);
+    /* #0E5B5E with opacity */
+    z-index: 1;
+}
+
+.intro-text-container {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    text-align: center;
+    color: white;
+}
+
+.intro-text-container p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    font-weight: 500;
+}
+
+/* Intro Triangles */
+.shape-triangle-left-small {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 60px 0 60px 80px;
+    border-color: transparent transparent transparent #F94A00;
+    z-index: 5;
+    transform: translateY(-50%);
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+}
+
+.shape-triangle-right-purple {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 150px 200px;
+    /* Triangle in corner */
+    border-color: transparent transparent #6c3483 transparent;
+    /* Purple */
+    z-index: 5;
 }
