@@ -717,5 +717,67 @@
     padding: 20px;
     border-top: 1px solid #333;
     font-size: 0.8rem;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
     color: #888;
+}
+
+/* About Page Styles */
+.content-section {
+    position: relative;
+    padding: 100px 20px;
+    background-color: white;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.about-container {
+    max-width: 1000px;
+    width: 100%;
+    z-index: 10;
+    text-align: center;
+}
+
+.about-grid {
+    display: flex;
+    gap: 60px;
+    margin-top: 60px;
+    align-items: center;
+    text-align: left;
+    flex-wrap: wrap;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    animation: float 6s ease-in-out infinite;
+}
+
+.about-text {
+    flex: 1.5;
+    min-width: 300px;
+}
+
+.about-text h3 {
+    color: #F94A00;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
 }
