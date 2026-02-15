@@ -194,3 +194,6 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
+
+from . import admin_routes
+app.include_router(admin_routes.router)

@@ -1,38 +1,76 @@
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import "../styles/home.css";
+import image3 from '../assets/Images/image3.jpg'; // Training/Services Banner
+
 const Services = () => {
   return (
-    <div className="services-container" style={{ padding: '40px', maxWidth: '1000px', margin: '0 auto' }}>
-      <h1 style={{ textAlign: 'center', color: '#0056b3' }}>Our Services</h1>
-      <p style={{ textAlign: 'center', marginBottom: '40px' }}>Comprehensive Occupational Safety and Health Services for Sri Lankan Industries.</p>
+    <div className="home-wrapper">
+      <Navbar />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
-        <div style={cardStyle}>
-          <h3>🏥 Medical Examinations</h3>
-          <p>Annual medical checkups for industrial workers, issuing "Fit for Work" certificates compliant with national regulations.</p>
+      {/* Header Banner - Services */}
+      <section className="intro-section" style={{
+        backgroundImage: `url(${image3})`,
+        minHeight: '400px',
+        marginTop: 0,
+        padding: '100px 20px'
+      }}>
+        <div className="intro-overlay"></div>
+        <div className="shape-triangle-right-purple" style={{ bottom: '20%' }}></div>
+
+        <div className="intro-text-container" style={{ zIndex: 10 }}>
+          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '20px', animation: 'fadeInUp 0.8s ease-out' }}>Our Services</h1>
+          <p style={{ fontSize: '1.2rem', animation: 'fadeInUp 0.8s ease-out 0.2s backwards' }}>
+            Specialized Occupational Safety, Health, and Environmental Solutions
+          </p>
         </div>
-        <div style={cardStyle}>
-          <h3>🧪 Environmental Testing</h3>
-          <p>Laboratory testing for air quality, noise levels, and water safety in factories and workplaces.</p>
+      </section>
+
+      {/* Services Grid Section */}
+      <section className="content-section" style={{ backgroundColor: '#f9f9f9' }}>
+        <div className="shape-triangle-bottom-left-teal" style={{ left: '-50px', transform: 'rotate(0deg)' }}></div>
+
+        <div className="about-container" style={{ maxWidth: '1200px' }}>
+          <h2 style={{ marginBottom: '10px', fontWeight: 800, color: '#333', fontSize: '2.5rem' }}>What We Offer</h2>
+          <p style={{ color: '#666', marginBottom: '40px' }}>Providing industry-leading expertise to ensure your workplace is safe, compliant, and productive.</p>
+
+          <div className="services-page-grid">
+
+            {/* Service 1 */}
+            <div className="service-card">
+              <div className="service-icon">🏥</div>
+              <h3>Medical Services</h3>
+              <p>Comprehensive fitness-to-work examinations, pre-employment screening, and annual medical checkups tailored for industrial workers.</p>
+            </div>
+
+            {/* Service 2 */}
+            <div className="service-card">
+              <div className="service-icon">🧪</div>
+              <h3>Environmental Testing</h3>
+              <p>Precision laboratory testing for air quality, noise, water, and specialized industrial hygiene monitoring.</p>
+            </div>
+
+            {/* Service 3 */}
+            <div className="service-card">
+              <div className="service-icon">🎓</div>
+              <h3>Safety Training</h3>
+              <p>Certified training programs including First Aid, Fire Safety, Chemical Handling, and bespoke OSH awareness sessions.</p>
+            </div>
+
+            {/* Service 4 */}
+            <div className="service-card">
+              <div className="service-icon">📋</div>
+              <h3>Audits & Consulting</h3>
+              <p>Expert safety audits (ISO 45001), risk assessments, and consultancy to ensure legal compliance and best practices.</p>
+            </div>
+
+          </div>
         </div>
-        <div style={cardStyle}>
-          <h3>🎓 Safety Training</h3>
-          <p>Certified training programs on Fire Safety, First Aid, and Chemical Handling with recognized certification.</p>
-        </div>
-        <div style={cardStyle}>
-          <h3>📋 Workplace Audits</h3>
-          <p>On-site safety audits to identify hazards and ensure compliance with ISO-45001 standards.</p>
-        </div>
-      </div>
+      </section>
+
+      <Footer />
     </div>
   );
-};
-
-const cardStyle = {
-  padding: '20px',
-  backgroundColor: '#fff',
-  border: '1px solid #ddd',
-  borderRadius: '8px',
-  boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
 };
 
 export default Services;
