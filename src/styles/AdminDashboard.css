@@ -1,0 +1,150 @@
+/* Admin Dashboard Styles */
+
+.admin-dashboard-wrapper {
+    background-color: #f4f6f9;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.dashboard-header {
+    margin-bottom: 40px;
+    color: #0E5B5E;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.dashboard-header::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #F94A00;
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.stat-card {
+    border: none;
+    border-radius: 15px;
+    color: white;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card.users {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+}
+
+.stat-card.certs {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.stat-card.active {
+    background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+}
+
+.stat-card.revenue {
+    background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+}
+
+.stat-card .card-body {
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-card h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.stat-card .card-title {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+    text-transform: uppercase;
+}
+
+.stat-icon {
+    font-size: 3.5rem;
+    opacity: 0.3;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+
+/* Feature Cards */
+.feature-card {
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: white;
+    height: 100%;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .card-body {
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.feature-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 2rem;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon-wrapper {
+    background: #F94A00;
+    color: white;
+    transform: scale(1.1);
+}
+
+.feature-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.feature-card .card-text {
+    color: #666;
+    margin-bottom: 25px;
+    min-height: 50px;
+}
+
+.btn-feature {
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
