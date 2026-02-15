@@ -36,3 +36,16 @@ class Certificate(Base):
     status = Column(String, default="active")
     
     owner = relationship("User", back_populates="certificates")
+
+class HistoricalData(Base):
+    __tablename__ = "historical_data"
+
+    id = Column(Integer, primary_key=True, index=True)
+    year = Column(Integer)
+    month = Column(String)
+    department = Column(String)
+    employees = Column(Integer)
+    accidents = Column(Integer)
+    near_misses = Column(Integer)
+    training_hours = Column(Integer)
+    compliance_score = Column(Integer)
