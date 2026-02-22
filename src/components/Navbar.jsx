@@ -10,7 +10,8 @@ const Navbar = () => {
         <li><Link to="/about">About Us</Link></li>
         <li><Link to="/services">Services</Link></li>
         <li><Link to="/contact">Contact Us</Link></li>
-        <li><Link to="/login" className="btn">Login</Link></li>
+        <li><Link to="/login" className="btn" style={{ display: 'none' }}>Login OLD</Link></li>
+        <li><Link to="/admin/dashboard" className="btn">Dashboard</Link></li>
       </ul>
     </nav>
   );
