@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminCertificateManager = () => {
     const [certificates, setCertificates] = useState([]);
+    const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
@@ -29,6 +30,7 @@ const AdminCertificateManager = () => {
 
     useEffect(() => {
         fetchCertificates();
+        fetchUsers();
     }, []);
 
     const fetchCertificates = async () => {
@@ -41,6 +43,15 @@ const AdminCertificateManager = () => {
             console.error(err);
             setError('Failed to fetch certificates from the server.');
             setLoading(false);
+        }
+    };
+
+    const fetchUsers = async () => {
+        try {
+            const res = await client.get('/admin/users');
+            setUsers(res.data);
+        } catch (err) {
+            console.error("Error fetching users for dropdown:", err);
         }
     };
 
@@ -263,18 +274,26 @@ const AdminCertificateManager = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Form.Label className="small fw-bold text-uppercase text-muted">Owner Email Address</Form.Label>
+                            <Form.Label className="small fw-bold text-uppercase text-muted">Owner / User Account</Form.Label>
                             <InputGroup className="bg-light rounded">
                                 <InputGroup.Text className="bg-transparent border-0"><FaEnvelope className="text-muted" /></InputGroup.Text>
-                                <Form.Control
-                                    type="email"
+                                <Form.Select
                                     className="bg-transparent border-0 py-2 shadow-none"
-                                    placeholder="user@example.com"
                                     value={formData.ownerEmail}
                                     onChange={e => setFormData({ ...formData, ownerEmail: e.target.value })}
                                     required
-                                />
+                                >
+                                    <option value="">Select a user account...</option>
+                                    {users.map(u => (
+                                        <option key={u.id} value={u.email}>
+                                            {u.full_name} ({u.email})
+                                        </option>
+                                    ))}
+                                </Form.Select>
                             </InputGroup>
+                            <Form.Text className="text-muted small px-2">
+                                Select the registered user who will own this certificate.
+                            </Form.Text>
                         </Form.Group>
 
                         <Row className="mb-3">

@@ -28,7 +28,7 @@ namespace IOSH_BE.Controllers
                     full_name = u.FullName,
                     u.Email,
                     u.Role,
-                    certificate_count = 0 // Placeholder
+                    certificate_count = _context.Certificates.Count(c => c.OwnerEmail == u.Email)
                 })
                 .ToListAsync();
 
@@ -46,6 +46,17 @@ namespace IOSH_BE.Controllers
                 return NotFound();
             }
 
+            var certificates = await _context.Certificates
+                .Where(c => c.OwnerEmail == user.Email)
+                .Select(c => new {
+                    c.Id,
+                    cert_id = c.CertId,
+                    c.Type,
+                    issue_date = c.IssueDate,
+                    c.Status
+                })
+                .ToListAsync();
+
             return Ok(new
             {
                 user = new
@@ -55,7 +66,7 @@ namespace IOSH_BE.Controllers
                     user.Email,
                     user.Role
                 },
-                certificates = new List<object>() // Placeholder
+                certificates = certificates
             });
         }
 
