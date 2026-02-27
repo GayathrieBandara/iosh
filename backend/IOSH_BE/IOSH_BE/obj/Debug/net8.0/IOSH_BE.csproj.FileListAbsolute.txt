@@ -273,3 +273,9 @@ D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\obj\Debug\net8.0\IOSH_BE.csproj.Up2Dat
 D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\obj\Debug\net8.0\IOSH_BE.dll
 D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\obj\Debug\net8.0\refint\IOSH_BE.dll
 D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\obj\Debug\net8.0\IOSH_BE.pdb
+D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\bin\Debug\net8.0\IOSH_BE.deps.json
+D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\bin\Debug\net8.0\IOSH_BE.runtimeconfig.json
+D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\bin\Debug\net8.0\IOSH_BE.dll
+D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\bin\Debug\net8.0\IOSH_BE.pdb
+D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\obj\Debug\net8.0\IOSH_BE.genruntimeconfig.cache
+D:\WEYS\iosh\iosh\backend\IOSH_BE\IOSH_BE\obj\Debug\net8.0\ref\IOSH_BE.dll
