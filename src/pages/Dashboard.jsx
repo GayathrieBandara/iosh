@@ -10,31 +10,11 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let token = localStorage.getItem('token');
-
-      // Auto-login if no token is found
+      const token = localStorage.getItem('token');
       if (!token) {
-        console.log("No token found, attempting auto-login...");
-        try {
-          const formData = new FormData();
-          formData.append('username', 'admin');
-          formData.append('password', '123');
-
-          const loginRes = await apiClient.post('/token', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-          });
-
-          token = loginRes.data.access_token;
-          localStorage.setItem('token', token);
-          console.log("Auto-login successful");
-        } catch (loginErr) {
-          console.error('Auto-login failed', loginErr);
-          // Only redirect if auto-login fails completely
-          navigate('/');
-          return;
-        }
+        navigate('/login');
+        return;
       }
-
       try {
         // 1. Get User
         const userRes = await apiClient.get('/users/me', {
@@ -56,9 +36,7 @@ const Dashboard = () => {
         }
       } catch (err) {
         console.error('Failed to fetch data', err);
-        // If data fetch fails (e.g. invalid token), try one more time by clearing token
-        localStorage.removeItem('token');
-        window.location.reload();
+        navigate('/login');
       }
     };
 

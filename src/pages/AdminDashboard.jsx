@@ -88,23 +88,7 @@ const AdminDashboard = () => {
                     {/* Feature Section */}
                     <h4 className="mb-4 text-center text-uppercase fw-bold" style={{ color: '#0E5B5E' }}>Management Tools</h4>
                     <Row>
-                        <Col md={3} className="mb-4">
-                            <Card className="feature-card shadow">
-                                <Card.Body>
-                                    <div className="feature-icon-wrapper">
-                                        <FaUsers />
-                                    </div>
-                                    <Card.Title>Manage Users</Card.Title>
-                                    <Card.Text>
-                                        View all registered customers, their profiles, and certificate history.
-                                    </Card.Text>
-                                    <Link to="/admin/users">
-                                        <Button variant="outline-dark" className="btn-feature">View Customers</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={3} className="mb-4">
+                        <Col md={4} className="mb-4">
                             <Card className="feature-card shadow">
                                 <Card.Body>
                                     <div className="feature-icon-wrapper">
@@ -112,7 +96,7 @@ const AdminDashboard = () => {
                                     </div>
                                     <Card.Title>Upload Data</Card.Title>
                                     <Card.Text>
-                                        Bulk upload historical safety data (CSV/Excel) to retrain the AI model.
+                                        Bulk upload historical safety data (CSV/Excel) to retrain the AI model and update records.
                                     </Card.Text>
                                     <Link to="/admin/upload">
                                         <Button variant="outline-primary" className="btn-feature">Upload Now</Button>
@@ -120,13 +104,13 @@ const AdminDashboard = () => {
                                 </Card.Body>
                             </Card>
                         </Col>
-                        <Col md={3} className="mb-4">
+                        <Col md={4} className="mb-4">
                             <Card className="feature-card shadow">
                                 <Card.Body>
                                     <div className="feature-icon-wrapper">
                                         <FaCogs />
                                     </div>
-                                    <Card.Title>Manage Certs</Card.Title>
+                                    <Card.Title>Manage Certificates</Card.Title>
                                     <Card.Text>
                                         Issue new safety certificates, verify existing ones, and manage expirations.
                                     </Card.Text>
@@ -136,7 +120,7 @@ const AdminDashboard = () => {
                                 </Card.Body>
                             </Card>
                         </Col>
-                        <Col md={3} className="mb-4">
+                        <Col md={4} className="mb-4">
                             <Card className="feature-card shadow">
                                 <Card.Body>
                                     <div className="feature-icon-wrapper">
