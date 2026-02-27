@@ -188,6 +188,7 @@ const AdminCertificateManager = () => {
                                             <th>Owner / Email</th>
                                             <th>Type</th>
                                             <th>Status</th>
+                                            <th>Issue Date</th>
                                             <th>Expiry Date</th>
                                             <th className="pe-4 text-end">Actions</th>
                                         </tr>
@@ -204,6 +205,12 @@ const AdminCertificateManager = () => {
                                                 </td>
                                                 <td><Badge bg="light" text="dark" className="border px-3 py-2 text-capitalize">{cert.type}</Badge></td>
                                                 <td>{getStatusBadge(cert.status)}</td>
+                                                <td>
+                                                    <div className="d-flex align-items-center text-muted small">
+                                                        <FaCalendarAlt className="me-2" />
+                                                        {new Date(cert.issueDate).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div className="d-flex align-items-center text-muted small">
                                                         <FaCalendarAlt className="me-2" />

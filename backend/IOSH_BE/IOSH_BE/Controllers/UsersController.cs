@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using IOSH_BE.Data;
 using IOSH_BE.Models;
+using System.Text.Json.Serialization;
 
 namespace IOSH_BE.Controllers
 {
@@ -133,16 +134,28 @@ namespace IOSH_BE.Controllers
 
     public class UserCreateDto
     {
+        [JsonPropertyName("full_name")]
         public string FullName { get; set; }
+        
+        [JsonPropertyName("email")]
         public string Email { get; set; }
+        
+        [JsonPropertyName("role")]
         public string Role { get; set; }
+        
+        [JsonPropertyName("password")]
         public string Password { get; set; }
     }
 
     public class UserUpdateDto
     {
+        [JsonPropertyName("full_name")]
         public string FullName { get; set; }
+        
+        [JsonPropertyName("email")]
         public string Email { get; set; }
+        
+        [JsonPropertyName("role")]
         public string Role { get; set; }
     }
 }
