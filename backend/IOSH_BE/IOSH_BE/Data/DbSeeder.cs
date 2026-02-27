@@ -15,7 +15,8 @@ namespace IOSH_BE.Data
                 {
                     Email = "admin",
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword("123"),
-                    FullName = "Administrator"
+                    FullName = "Administrator",
+                    Role = "admin"
                 });
                 context.SaveChanges();
             }

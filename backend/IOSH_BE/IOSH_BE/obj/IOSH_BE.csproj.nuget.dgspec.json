@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sathi\\OneDrive\\Documents\\GitHub\\slitt_final_be\\Sathindu3-slitt_final_be\\IOSH_BE\\IOSH_BE\\IOSH_BE.csproj": {}
+    "D:\\WEYS\\iosh\\iosh\\backend\\IOSH_BE\\IOSH_BE\\IOSH_BE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sathi\\OneDrive\\Documents\\GitHub\\slitt_final_be\\Sathindu3-slitt_final_be\\IOSH_BE\\IOSH_BE\\IOSH_BE.csproj": {
+    "D:\\WEYS\\iosh\\iosh\\backend\\IOSH_BE\\IOSH_BE\\IOSH_BE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sathi\\OneDrive\\Documents\\GitHub\\slitt_final_be\\Sathindu3-slitt_final_be\\IOSH_BE\\IOSH_BE\\IOSH_BE.csproj",
+        "projectUniqueName": "D:\\WEYS\\iosh\\iosh\\backend\\IOSH_BE\\IOSH_BE\\IOSH_BE.csproj",
         "projectName": "IOSH_BE",
-        "projectPath": "C:\\Users\\sathi\\OneDrive\\Documents\\GitHub\\slitt_final_be\\Sathindu3-slitt_final_be\\IOSH_BE\\IOSH_BE\\IOSH_BE.csproj",
+        "projectPath": "D:\\WEYS\\iosh\\iosh\\backend\\IOSH_BE\\IOSH_BE\\IOSH_BE.csproj",
         "packagesPath": "C:\\Users\\sathi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sathi\\OneDrive\\Documents\\GitHub\\slitt_final_be\\Sathindu3-slitt_final_be\\IOSH_BE\\IOSH_BE\\obj\\",
+        "outputPath": "D:\\WEYS\\iosh\\iosh\\backend\\IOSH_BE\\IOSH_BE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
