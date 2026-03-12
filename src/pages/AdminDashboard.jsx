@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaUsers, FaCertificate, FaCheckCircle, FaMoneyBillWave, FaCloudUploadAlt, FaChartLine, FaCogs } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
@@ -27,132 +27,112 @@ const AdminDashboard = () => {
         fetchStats();
     }, []);
 
+    const featureCards = [
+        {
+            icon: <FaUsers />,
+            title: 'Manage Users',
+            desc: 'View all registered customers, their profiles, and certificate history.',
+            link: '/admin/users',
+            btnText: 'View Customers'
+        },
+        {
+            icon: <FaCloudUploadAlt />,
+            title: 'Upload Data',
+            desc: 'Bulk upload historical safety data (CSV/Excel) to retrain the AI model.',
+            link: '/admin/upload',
+            btnText: 'Upload Now'
+        },
+        {
+            icon: <FaCogs />,
+            title: 'Manage Certs',
+            desc: 'Issue new safety certificates, verify existing ones, and manage expirations.',
+            link: '/admin/certificates',
+            btnText: 'Manage Certs'
+        },
+        {
+            icon: <FaChartLine />,
+            title: 'AI Insights',
+            desc: 'Analyze trends, view risk predictions, and get AI-driven safety recommendations.',
+            link: '/admin/analysis',
+            btnText: 'View Analysis'
+        }
+    ];
+
     return (
         <>
             <Navbar />
             <div className="admin-dashboard-wrapper">
                 <Container>
-                    <div className="text-center mb-5">
-                        <h2 className="dashboard-header">Admin Dashboard</h2>
-                        <p className="lead text-muted">Manage your institute's safety certifications and data insights.</p>
+                    {/* Header */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
+                        <div>
+                            <h2 className="dashboard-header">Admin Dashboard</h2>
+                            <p className="dashboard-subtitle">Manage your institute's safety certifications and data insights.</p>
+                        </div>
+                        <Link to="/login">
+                            <button className="btn-logout-light" onClick={() => localStorage.removeItem('token')}>
+                                ✦ Logout
+                            </button>
+                        </Link>
                     </div>
 
                     {/* Stats Row */}
-                    <Row className="mb-5">
-                        <Col md={3} sm={6}>
-                            <Card className="stat-card users">
-                                <Card.Body>
-                                    <div>
-                                        <Card.Title>Total Users</Card.Title>
-                                        <h3>{stats.total_users}</h3>
-                                    </div>
-                                    <FaUsers className="stat-icon" />
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={3} sm={6}>
-                            <Card className="stat-card certs">
-                                <Card.Body>
-                                    <div>
-                                        <Card.Title>Issued Certs</Card.Title>
-                                        <h3>{stats.total_certs}</h3>
-                                    </div>
-                                    <FaCertificate className="stat-icon" />
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={3} sm={6}>
-                            <Card className="stat-card active">
-                                <Card.Body>
-                                    <div>
-                                        <Card.Title>Active Valid</Card.Title>
-                                        <h3>{stats.active_certs}</h3>
-                                    </div>
-                                    <FaCheckCircle className="stat-icon" />
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={3} sm={6}>
-                            <Card className="stat-card revenue">
-                                <Card.Body>
-                                    <div>
-                                        <Card.Title>Revenue</Card.Title>
-                                        <h3>Rs. {stats.revenue.toLocaleString()}</h3>
-                                    </div>
-                                    <FaMoneyBillWave className="stat-icon" />
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
+                    <div className="stats-grid">
+                        <div className="light-card stat-card">
+                            <div className="stat-icon-wrapper blue">
+                                <FaUsers />
+                            </div>
+                            <div className="stat-value">{stats.total_users}</div>
+                            <div className="stat-label">Total Users</div>
+                        </div>
+                        <div className="light-card stat-card">
+                            <div className="stat-icon-wrapper green">
+                                <FaCertificate />
+                            </div>
+                            <div className="stat-value">{stats.total_certs}</div>
+                            <div className="stat-label">Issued Certs</div>
+                        </div>
+                        <div className="light-card stat-card">
+                            <div className="stat-icon-wrapper orange">
+                                <FaCheckCircle />
+                            </div>
+                            <div className="stat-value">{stats.active_certs}</div>
+                            <div className="stat-label">Active Valid</div>
+                        </div>
+                        <div className="light-card stat-card">
+                            <div className="stat-icon-wrapper teal">
+                                <FaMoneyBillWave />
+                            </div>
+                            <div className="stat-value">Rs. {stats.revenue.toLocaleString()}</div>
+                            <div className="stat-label">Revenue</div>
+                        </div>
+                    </div>
 
-                    {/* Feature Section */}
-                    <h4 className="mb-4 text-center text-uppercase fw-bold" style={{ color: '#0E5B5E' }}>Management Tools</h4>
-                    <Row>
-                        <Col md={3} className="mb-4">
-                            <Card className="feature-card shadow">
-                                <Card.Body>
-                                    <div className="feature-icon-wrapper">
-                                        <FaUsers />
+                    {/* Management Tools Section */}
+                    <div style={{ marginTop: '56px' }}>
+                        <div className="text-center mb-5">
+                            <h4 className="section-title">Management Tools</h4>
+                            <p className="section-subtitle">Quick access to admin features</p>
+                        </div>
+                        <Row>
+                            {featureCards.map((card, index) => (
+                                <Col md={3} sm={6} className="mb-4" key={index}>
+                                    <div className="light-card feature-card-light">
+                                        <div className="feature-icon-wrapper">
+                                            {card.icon}
+                                        </div>
+                                        <h5 className="feature-title-light">{card.title}</h5>
+                                        <p className="feature-desc-light">{card.desc}</p>
+                                        <Link to={card.link}>
+                                            <button className="btn-feature-light">
+                                                {card.btnText}
+                                            </button>
+                                        </Link>
                                     </div>
-                                    <Card.Title>Manage Users</Card.Title>
-                                    <Card.Text>
-                                        View all registered customers, their profiles, and certificate history.
-                                    </Card.Text>
-                                    <Link to="/admin/users">
-                                        <Button variant="outline-dark" className="btn-feature">View Customers</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={3} className="mb-4">
-                            <Card className="feature-card shadow">
-                                <Card.Body>
-                                    <div className="feature-icon-wrapper">
-                                        <FaCloudUploadAlt />
-                                    </div>
-                                    <Card.Title>Upload Data</Card.Title>
-                                    <Card.Text>
-                                        Bulk upload historical safety data (CSV/Excel) to retrain the AI model.
-                                    </Card.Text>
-                                    <Link to="/admin/upload">
-                                        <Button variant="outline-primary" className="btn-feature">Upload Now</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={3} className="mb-4">
-                            <Card className="feature-card shadow">
-                                <Card.Body>
-                                    <div className="feature-icon-wrapper">
-                                        <FaCogs />
-                                    </div>
-                                    <Card.Title>Manage Certs</Card.Title>
-                                    <Card.Text>
-                                        Issue new safety certificates, verify existing ones, and manage expirations.
-                                    </Card.Text>
-                                    <Link to="/admin/certificates">
-                                        <Button variant="outline-success" className="btn-feature">Manage Certs</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={3} className="mb-4">
-                            <Card className="feature-card shadow">
-                                <Card.Body>
-                                    <div className="feature-icon-wrapper">
-                                        <FaChartLine />
-                                    </div>
-                                    <Card.Title>AI Insights</Card.Title>
-                                    <Card.Text>
-                                        Analyze trends, view risk predictions, and get AI-driven safety recommendations.
-                                    </Card.Text>
-                                    <Link to="/admin/analysis">
-                                        <Button variant="outline-danger" className="btn-feature">View Analysis</Button>
-                                    </Link>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
+                                </Col>
+                            ))}
+                        </Row>
+                    </div>
                 </Container>
             </div>
             <Footer />

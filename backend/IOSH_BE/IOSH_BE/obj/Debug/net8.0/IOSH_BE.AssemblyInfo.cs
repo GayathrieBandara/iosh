@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IOSH_BE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4fd0d183ede62eee4b5eb6591df299385d5b470b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42fc4df25f6c34a9d448bc8ef7bf0be804640371")]
 [assembly: System.Reflection.AssemblyProductAttribute("IOSH_BE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IOSH_BE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
