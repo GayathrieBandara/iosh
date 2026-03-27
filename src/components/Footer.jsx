@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaCheckCircle, FaFacebook } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import '../styles/home.css'; // Assuming styles will be added here
+import '../styles/home.css';
 
 const Footer = () => {
   return (
