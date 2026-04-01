@@ -17,7 +17,6 @@ namespace IOSH_BE.Controllers
             _context = context;
         }
 
-        // GET: admin/users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<object>>> GetUsers()
         {
@@ -35,7 +34,6 @@ namespace IOSH_BE.Controllers
             return Ok(users);
         }
 
-        // GET: admin/users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<object>> GetUser(int id)
         {
@@ -70,7 +68,6 @@ namespace IOSH_BE.Controllers
             });
         }
 
-        // POST: admin/users
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(UserCreateDto model)
         {
@@ -88,7 +85,6 @@ namespace IOSH_BE.Controllers
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
 
-        // PUT: admin/users/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, UserUpdateDto model)
         {
@@ -121,7 +117,6 @@ namespace IOSH_BE.Controllers
             return NoContent();
         }
 
-        // DELETE: admin/users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {

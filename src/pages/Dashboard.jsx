@@ -14,7 +14,6 @@ const Dashboard = () => {
     const fetchData = async () => {
       let token = localStorage.getItem('token');
 
-      // Auto-login if no token is found
       if (!token) {
         console.log("No token found, attempting auto-login...");
         try {
@@ -37,13 +36,11 @@ const Dashboard = () => {
       }
 
       try {
-        // 1. Get User
         const userRes = await apiClient.get('/users/me', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUser(userRes.data);
 
-        // 2. Fetch Data based on Role
         if (userRes.data.role === 'admin') {
           const statsRes = await apiClient.get('/stats', {
             headers: { Authorization: `Bearer ${token}` }
@@ -97,7 +94,6 @@ const Dashboard = () => {
   return (
     <div className="admin-dashboard-wrapper">
       <div className="container">
-        {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
           <div>
             <h1 className="dashboard-header">IOSH Dashboard</h1>
@@ -111,7 +107,6 @@ const Dashboard = () => {
           </button>
         </div>
 
-        {/* Welcome Banner */}
         <div className="welcome-banner">
           <h2>Welcome back, {user.full_name} 👋</h2>
           <div className="user-meta">
@@ -122,7 +117,6 @@ const Dashboard = () => {
 
         {user.role === 'admin' ? (
           <div className="admin-view">
-            {/* Stats Grid */}
             {stats ? (
               <div className="stats-grid">
                 <div className="light-card stat-card">
@@ -152,7 +146,6 @@ const Dashboard = () => {
               </div>
             )}
 
-            {/* AI Forecaster Panel */}
             <div className="forecaster-panel">
               <div className="forecaster-header">
                 <h3>🤖 AI Safety Forecaster</h3>
@@ -178,7 +171,6 @@ const Dashboard = () => {
                 </div>
               </form>
 
-              {/* Prediction Result */}
               {prediction && (
                 <div className="light-card" style={{ marginTop: '24px', textAlign: 'center', border: '2px solid #eee' }}>
                   <div className="stat-value" style={{ fontSize: '3rem', color: '#F94A00' }}>
@@ -223,7 +215,6 @@ const Dashboard = () => {
               )}
             </div>
 
-            {/* Action Buttons */}
             <div className="action-buttons">
               <button className="btn-light-action highlight" onClick={() => navigate('/admin/certificates')}>
                 📜 Manage Certificates

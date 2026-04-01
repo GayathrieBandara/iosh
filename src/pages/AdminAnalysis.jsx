@@ -10,7 +10,6 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/AdminAnalysis.css';
 
-// Separate axios client for the Python AI API
 const aiClient = axios.create({
     baseURL: 'http://localhost:5000',
     headers: { 'Content-Type': 'application/json' },
@@ -87,7 +86,6 @@ const AdminAnalysis = () => {
         setPredictionInput(prev => ({ ...prev, [field]: value }));
     };
 
-    // Prepare radar chart data from environmental analytics
     const radarData = envData.map(e => ({
         sector: e.sector,
         Noise: e.avg_noise_db,
@@ -97,7 +95,6 @@ const AdminAnalysis = () => {
         Humidity: e.avg_humidity_pct,
     }));
 
-    // Feature importance sorted
     const importanceSorted = analysis?.feature_importance
         ? Object.entries(analysis.feature_importance)
             .sort((a, b) => b[1] - a[1])
@@ -132,7 +129,6 @@ const AdminAnalysis = () => {
             <Navbar />
             <div className="analysis-page">
                 <Container>
-                    {/* Header */}
                     <div className="mb-4">
                         <h1 className="page-title">AI Analytics Dashboard</h1>
                         <p className="page-subtitle">
@@ -144,7 +140,6 @@ const AdminAnalysis = () => {
                         </div>
                     </div>
 
-                    {/* Stat Cards */}
                     <Row className="g-3 mb-4">
                         <Col xs={6} lg={3}>
                             <div className="light-card stat-card">
@@ -176,7 +171,6 @@ const AdminAnalysis = () => {
                         </Col>
                     </Row>
 
-                    {/* Charts Row 1: Sector + Risk Distribution */}
                     <Row className="g-3 mb-4">
                         <Col lg={8}>
                             <div className="light-card">
@@ -228,7 +222,6 @@ const AdminAnalysis = () => {
                         </Col>
                     </Row>
 
-                    {/* Charts Row 2: District + Environmental Radar */}
                     <Row className="g-3 mb-4">
                         <Col lg={6}>
                             <div className="light-card">
@@ -271,7 +264,6 @@ const AdminAnalysis = () => {
                         </Col>
                     </Row>
 
-                    {/* Feature Importance */}
                     <Row className="g-3 mb-4">
                         <Col lg={12}>
                             <div className="light-card">
@@ -295,7 +287,6 @@ const AdminAnalysis = () => {
                         </Col>
                     </Row>
 
-                    {/* AI Prediction Panel */}
                     <div className="prediction-panel mb-4" id="predict">
                         <Row>
                             <Col lg={12} className="mb-3">
@@ -305,7 +296,6 @@ const AdminAnalysis = () => {
                         </Row>
                         <Form onSubmit={handlePredict}>
                             <Row className="g-3">
-                                {/* Environmental Inputs */}
                                 <Col md={4} lg={3}>
                                     <Form.Group>
                                         <Form.Label>Noise Level (dB)</Form.Label>
@@ -357,7 +347,6 @@ const AdminAnalysis = () => {
                                     </Form.Group>
                                 </Col>
 
-                                {/* Health Inputs */}
                                 <Col md={4} lg={3}>
                                     <Form.Group>
                                         <Form.Label>Employee Age</Form.Label>
@@ -403,7 +392,6 @@ const AdminAnalysis = () => {
                                     </Form.Group>
                                 </Col>
 
-                                {/* Sector & District */}
                                 <Col md={4} lg={3}>
                                     <Form.Group>
                                         <Form.Label>Sector</Form.Label>
@@ -439,7 +427,6 @@ const AdminAnalysis = () => {
                             </Row>
                         </Form>
 
-                        {/* Prediction Result */}
                         {predictionResult && (
                             <div className="prediction-result mt-5">
                                 <Row className="g-4">
