@@ -1,0 +1,167 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using IOSH_BE.Data;
+using IOSH_BE.Models;
+using System.Text.Json.Serialization;
+
+namespace IOSH_BE.Controllers
+{
+    [Route("admin/[controller]")]
+    [ApiController]
+    public class UsersController : ControllerBase
+    {
+        private readonly AppDbContext _context;
+
+        public UsersController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<object>>> GetUsers()
+        {
+            var users = await _context.Users
+                .Select(u => new
+                {
+                    u.Id,
+                    full_name = u.FullName,
+                    u.Email,
+                    u.Role,
+                    certificate_count = _context.Certificates.Count(c => c.OwnerEmail == u.Email)
+                })
+                .ToListAsync();
+
+            return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<object>> GetUser(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var certificates = await _context.Certificates
+                .Where(c => c.OwnerEmail == user.Email)
+                .Select(c => new {
+                    c.Id,
+                    cert_id = c.CertId,
+                    c.Type,
+                    issue_date = c.IssueDate,
+                    c.Status
+                })
+                .ToListAsync();
+
+            return Ok(new
+            {
+                user = new
+                {
+                    user.Id,
+                    full_name = user.FullName,
+                    user.Email,
+                    user.Role
+                },
+                certificates = certificates
+            });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<User>> PostUser(UserCreateDto model)
+        {
+            var user = new User
+            {
+                Email = model.Email,
+                FullName = model.FullName,
+                Role = model.Role,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password)
+            };
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUser(int id, UserUpdateDto model)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.FullName = model.FullName;
+            user.Email = model.Email;
+            user.Role = model.Role;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool UserExists(int id)
+        {
+            return _context.Users.Any(e => e.Id == id);
+        }
+    }
+
+    public class UserCreateDto
+    {
+        [JsonPropertyName("full_name")]
+        public string FullName { get; set; }
+        
+        [JsonPropertyName("email")]
+        public string Email { get; set; }
+        
+        [JsonPropertyName("role")]
+        public string Role { get; set; }
+        
+        [JsonPropertyName("password")]
+        public string Password { get; set; }
+    }
+
+    public class UserUpdateDto
+    {
+        [JsonPropertyName("full_name")]
+        public string FullName { get; set; }
+        
+        [JsonPropertyName("email")]
+        public string Email { get; set; }
+        
+        [JsonPropertyName("role")]
+        public string Role { get; set; }
+    }
+}

@@ -1,8 +1,0 @@
-fastapi
-uvicorn
-sqlalchemy
-scikit-learn
-pandas
-python-multipart
-python-jose[cryptography]
-passlib[bcrypt]
